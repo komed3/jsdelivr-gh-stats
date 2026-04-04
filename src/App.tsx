@@ -20,7 +20,7 @@ export default function App () {
     const [ loading, setLoading ] = useState( false );
     const [ error, setError ] = useState< string | null >( null );
     const [ hasSearched, setHasSearched ] = useState( false );
-    
+
     const fetchData = async ( u: string, r: string, p: Period ) : Promise< void > => {
         if ( ! u || ! r ) return;
 
@@ -36,11 +36,10 @@ export default function App () {
             }
 
             const result: JsDelivrResponse = await response.json();
-
             if ( result.hits.rank === null && result.hits.typeRank === null && result.hits.total === 0 ) {
                 throw new Error( `Repository "${u}/${r}" has no data or does not exist on jsDelivr.` );
             }
-        
+
             setData( result );
         } catch ( err ) {
             setError( err instanceof Error ? err.message : 'An unknown error occurred' );
@@ -49,6 +48,25 @@ export default function App () {
             setLoading( false );
         }
     };
+
+    const handleSubmit = ( e: React.SubmitEvent ) => {
+        e.preventDefault();
+        fetchData( user, repo, period );
+    };
+
+    const chartData = useMemo( () => {
+        if ( ! data ) return [];
+
+        const dates = Object.keys( data.hits.dates ).sort();
+        return dates.map( date => ( {
+            date, formattedDate: formatDate( date ),
+            hits: data.hits.dates[ date ] || 0,
+            bandwidth: data.bandwidth.dates[ date ] || 0
+        } ) );
+    }, [ data ] );
+
+    const hitTrend = data ? calculateTrend( data.hits.total, data.hits.prev.total ) : 0;
+    const bandwidthTrend = data ? calculateTrend( data.bandwidth.total, data.bandwidth.prev.total ) : 0;
 
     return ( <></> );
 }

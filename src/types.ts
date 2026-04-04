@@ -19,7 +19,7 @@ export interface JsDelivrResponse {
     };
 }
 
-export type Period = 
+export type Period =
     | 'day' | 'week' | 'month' | 'quarter' | 'year'
     | 's-month' | 's-quarter' | 's-year';
 
