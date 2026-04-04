@@ -1,4 +1,6 @@
-import type { Period } from './types';
+import React, { useMemo, useState } from 'react';
+import type { JsDelivrResponse, Period } from './types';
+import { calculateTrend, formatDate } from './utils';
 
 const PERIODS: { value: Period; label: string }[] = [
     { value: 'week', label: 'Last 7 Days' },
@@ -11,5 +13,13 @@ const PERIODS: { value: Period; label: string }[] = [
 ];
 
 export default function App () {
+    const [ user, setUser ] = useState( '' );
+    const [ repo, setRepo ] = useState( '' );
+    const [ period, setPeriod ] = useState<Period>( 'quarter' );
+    const [ data, setData ] = useState< JsDelivrResponse | null >( null );
+    const [ loading, setLoading ] = useState( false );
+    const [ error, setError ] = useState< string | null >( null );
+    const [ hasSearched, setHasSearched ] = useState( false );
+
     return ( <></> );
 }
