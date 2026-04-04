@@ -14,6 +14,8 @@ interface SummaryCardsProps {
     data: JsDelivrResponse;
     hitTrend: number;
     bandwidthTrend: number;
+    globalRankTrend: number;
+    typeRankTrend: number;
 }
 
 const SummaryCard: React.FC< SummaryCardProps > = ( { icon, title, value, trend } ) => {
@@ -29,7 +31,7 @@ const SummaryCard: React.FC< SummaryCardProps > = ( { icon, title, value, trend 
     </div> );
 };
 
-export const SummaryCards: React.FC< SummaryCardsProps > = ( { data, hitTrend, bandwidthTrend } ) => {
+export const SummaryCards: React.FC< SummaryCardsProps > = ( { data, hitTrend, bandwidthTrend, globalRankTrend, typeRankTrend } ) => {
     return ( <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-black divide-x-2 divide-y-2 md:divide-y-0 divide-black">
         <SummaryCard
             icon={ <Download className="w-6 h-6" /> } title="Total Hits"
@@ -42,10 +44,12 @@ export const SummaryCards: React.FC< SummaryCardsProps > = ( { data, hitTrend, b
         <SummaryCard
             icon={ <TrendingUp className="w-6 h-6" /> } title="Global Rank"
             value={ data.hits.rank !== null ? `#${ formatNumber( data.hits.rank ) }` : 'N/A' }
+            trend={ globalRankTrend }
         />
         <SummaryCard
             icon={ <Info className="w-6 h-6" /> } title="Type Rank"
             value={ data.hits.typeRank !== null ? `#${ formatNumber( data.hits.typeRank ) }` : 'N/A' }
+            trend={ typeRankTrend }
         />
     </div> );
 };

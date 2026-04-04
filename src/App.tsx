@@ -76,6 +76,8 @@ export default function App () {
 
     const hitTrend = data ? calculateTrend( data.hits.total, data.hits.prev.total ) : 0;
     const bandwidthTrend = data ? calculateTrend( data.bandwidth.total, data.bandwidth.prev.total ) : 0;
+    const globalRankTrend = data ? calculateTrend( data.hits.rank, data.hits.prev.rank ) : 0;
+    const typeRankTrend = data ? calculateTrend( data.hits.typeRank, data.hits.prev.typeRank ) : 0;
 
     return ( <div className="min-h-screen bg-white text-black font-mono selection:bg-black selection:text-white">
         <Patterns />
@@ -92,7 +94,10 @@ export default function App () {
             { loading && <LoadingState /> }
 
             { data && ! loading && ( <div className="space-y-12 animate-in fade-in duration-500">
-                <SummaryCards data={ data } hitTrend={ hitTrend } bandwidthTrend={ bandwidthTrend } />
+                <SummaryCards
+                    data={ data } hitTrend={ hitTrend } bandwidthTrend={ bandwidthTrend }
+                    globalRankTrend={ globalRankTrend } typeRankTrend={ typeRankTrend }
+                />
                 <DataTable chartData={ chartData } />
             </div> ) }
         </main>
