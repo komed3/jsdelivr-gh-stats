@@ -2,6 +2,8 @@ import React, { useMemo, useState } from 'react';
 import type { JsDelivrResponse, Period } from './types';
 import { calculateTrend, formatDate } from './utils';
 
+import { Patterns } from './components/Patterns';
+
 const PERIODS: { value: Period; label: string }[] = [
     { value: 'week', label: 'Last 7 Days' },
     { value: 'month', label: 'Last 30 Days' },
@@ -69,6 +71,8 @@ export default function App () {
     const bandwidthTrend = data ? calculateTrend( data.bandwidth.total, data.bandwidth.prev.total ) : 0;
 
     return ( <div className="min-h-screen bg-white text-black font-mono selection:bg-black selection:text-white">
+        <Patterns />
+
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"></main>
     </div> );
 }
