@@ -4,6 +4,7 @@ import { calculateTrend, formatDate } from './utils';
 
 import { EmptyState } from './components/EmptyState';
 import { ErrorMessage } from './components/ErrorMessage';
+import { Footer } from './components/Footer';
 import { LoadingState } from './components/LoadingState';
 import { Patterns } from './components/Patterns';
 
@@ -81,5 +82,6 @@ export default function App () {
             { ! hasSearched && ! loading && <EmptyState /> }
             { loading && <LoadingState /> }
         </main>
+        <Footer />
     </div> );
 }
