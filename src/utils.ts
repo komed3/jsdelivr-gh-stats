@@ -9,8 +9,10 @@ export function formatBytes ( bytes: number, decimals = 2 ) : string {
     return parseFloat( ( bytes / Math.pow( k, i ) ).toFixed( dm ) ) + ' ' + SIZES[ i ];
 }
 
-export function formatNumber ( num: number | null ) : string {
-    return num === null ? 'N/A' : new Intl.NumberFormat().format( num );
+export function formatNumber ( num: number | null, d: number = 0 ) : string {
+    return num === null ? 'N/A' : new Intl.NumberFormat( undefined, {
+        minimumFractionDigits: d, maximumFractionDigits: d
+    } ).format( num );
 }
 
 export function formatDate ( dateStr: string ) : string {
