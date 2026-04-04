@@ -7,16 +7,16 @@ interface DataTableProps {
 
 export const DataTable: React.FC< DataTableProps > = ( { chartData } ) => {
     return ( <div className="border-2 border-black bg-white">
-        <div className="px-8 py-4 border-b-2 border-black flex items-center justify-between bg-gray-50">
+        <div className="px-8 py-4 border-b-2 border-black flex items-center justify-between">
             <h4 className="font-black uppercase tracking-widest">Full Data Log</h4>
             <p className="text-xs font-bold">{ chartData.length } Records</p>
         </div>
         <div className="max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-black scrollbar-track-gray-100">
             <table className="w-full text-left border-collapse">
-                <thead className="sticky top-0 bg-black text-white z-10 shadow-[0_2px_0_0_rgba(0,0,0,1)]">
+                <thead className="sticky top-0 bg-black text-white z-10">
                     <tr>
-                        <th className="px-8 py-4 text-xs font-black uppercase border-r-2 border-white">Date</th>
-                        <th className="px-8 py-4 text-xs font-black uppercase border-r-2 border-white">Hits</th>
+                        <th className="px-8 py-4 text-xs font-black uppercase border-r-2">Date</th>
+                        <th className="px-8 py-4 text-xs font-black uppercase border-r-2">Hits</th>
                         <th className="px-8 py-4 text-xs font-black uppercase">Bandwidth</th>
                     </tr>
                 </thead>
