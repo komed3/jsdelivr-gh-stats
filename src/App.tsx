@@ -77,8 +77,8 @@ export default function App () {
 
     const hitTrend = data ? calculateTrend( data.hits.total, data.hits.prev.total ) : 0;
     const bandwidthTrend = data ? calculateTrend( data.bandwidth.total, data.bandwidth.prev.total ) : 0;
-    const globalRankTrend = data ? calculateTrend( data.hits.rank, data.hits.prev.rank ) : 0;
-    const typeRankTrend = data ? calculateTrend( data.hits.typeRank, data.hits.prev.typeRank ) : 0;
+    const globalRankTrend = data ? calculateTrend( data.hits.rank || 0, data.hits.prev.rank || 0 ) : 0;
+    const typeRankTrend = data ? calculateTrend( data.hits.typeRank || 0, data.hits.prev.typeRank || 0 ) : 0;
 
     return ( <div className="min-h-screen bg-white text-black font-mono selection:bg-black selection:text-white">
         <Patterns />
