@@ -20,6 +20,35 @@ export default function App () {
     const [ loading, setLoading ] = useState( false );
     const [ error, setError ] = useState< string | null >( null );
     const [ hasSearched, setHasSearched ] = useState( false );
+    
+    const fetchData = async ( u: string, r: string, p: Period ) : Promise< void > => {
+        if ( ! u || ! r ) return;
+
+        setLoading( true );
+        setError( null );
+        setHasSearched( true );
+
+        try {
+            const response = await fetch( `https://data.jsdelivr.com/v1/stats/packages/gh/${u}/${r}?period=${p}` );
+            if ( ! response.ok ) {
+                if ( response.status === 404 ) throw new Error( `Repository "${u}/${r}" not found on jsDelivr.` );
+                throw new Error( `API Error: ${response.statusText} (${response.status})` );
+            }
+
+            const result: JsDelivrResponse = await response.json();
+
+            if ( result.hits.rank === null && result.hits.typeRank === null && result.hits.total === 0 ) {
+                throw new Error( `Repository "${u}/${r}" has no data or does not exist on jsDelivr.` );
+            }
+        
+            setData( result );
+        } catch ( err ) {
+            setError( err instanceof Error ? err.message : 'An unknown error occurred' );
+            setData( null );
+        } finally {
+            setLoading( false );
+        }
+    };
 
     return ( <></> );
 }
