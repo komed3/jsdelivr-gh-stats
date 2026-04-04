@@ -7,15 +7,14 @@ interface ErrorMessageProps {
 
 export const ErrorMessage: React.FC< ErrorMessageProps > = ( { error } ) => {
     return ( <div className="flex flex-col items-center justify-center py-32 text-center">
-        <div className="border-2 border-black p-12 bg-white mb-10 flex items-start gap-4 animate-in zoom-in-95 duration-200">
-            <AlertCircle className="w-8 h-8 flex-shrink-0" />
-            <div>
-                <h2 className="text-xl font-black uppercase mb-1">Error Detected</h2>
-                <p className="font-bold">{error}</p>
-                <p className="text-sm mt-2 text-gray-600">
-                    Please verify the GitHub username and repository name.
-                </p>
-            </div>
+        <div className="border-2 border-black p-12 max-w-lg">
+            <AlertCircle className="w-16 h-16 mx-auto mb-6" />
+            <p className="font-bold text-gray-500">
+                Enter a GitHub username and repository above to begin the statistical analysis.
+            </p>
+            <p className="text-sm mt-2 text-gray-600">
+                Please verify the GitHub username and repository name.
+            </p>
         </div>
     </div> );
 };
