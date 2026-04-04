@@ -26,7 +26,9 @@ export const Header: React.FC< HeaderProps > = ( { user, setUser, repo, setRepo,
                         <Activity className="w-6 h-6" />
                     </div>
                     <h1 className="text-2xl font-black uppercase tracking-tighter">
-                        JS<span className="bg-black text-white px-1.5 ml-1">delivr</span> GitHub Stats
+                        JS<span className="bg-black text-white px-1.5 ml-1">delivr</span>
+                        <span className="hidden lg:inline ml-3">GitHub Stats</span>
+                        <span className="lg:hidden ml-3">GH Stats</span>
                     </h1>
                 </div>
 
@@ -57,7 +59,7 @@ export const Header: React.FC< HeaderProps > = ( { user, setUser, repo, setRepo,
                     </select>
                     <button
                         type="submit" disabled={ loading }
-                        className="bg-black text-white px-6 text-sm font-black uppercase tracking-widest cursor-pointer transition-colors flex items-center justify-center gap-2 disabled:bg-gray-400 flex-grow md:flex-grow-0"
+                        className="bg-black text-white px-6 py-1.5 text-sm font-black uppercase tracking-widest cursor-pointer transition-colors flex items-center justify-center gap-2 disabled:bg-gray-400 flex-grow md:flex-grow-0"
                     >
                         { loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Search className="w-4 h-4" /> }
                         Run
