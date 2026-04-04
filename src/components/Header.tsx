@@ -29,7 +29,7 @@ export const Header: React.FC< HeaderProps > = ( { user, setUser, repo, setRepo,
                         JS<span className="bg-black text-white px-1.5 ml-1">delivr</span> GitHub Stats
                     </h1>
                 </div>
-                
+
                 <form onSubmit={ onSubmit } className="flex flex-wrap items-stretch gap-3 w-full md:w-auto">
                     <div className="flex items-center border-2 border-black px-2 py-1 flex-grow md:flex-grow-0">
                         <SiGithub className="w-4 h-4 mr-2 flex-shrink-0" />

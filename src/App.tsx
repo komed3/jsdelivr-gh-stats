@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { LoadingState } from './components/LoadingState';
 import { Patterns } from './components/Patterns';
+import { SummaryCards } from './components/SummaryCards';
 
 const PERIODS: { value: Period; label: string }[] = [
     { value: 'week', label: 'Last 7 Days' },
@@ -79,28 +80,21 @@ export default function App () {
     return ( <div className="min-h-screen bg-white text-black font-mono selection:bg-black selection:text-white">
         <Patterns />
 
-        <Header 
-            user={ user }
-            setUser={ setUser }
-            repo={ repo }
-            setRepo={ setRepo }
-            period={ period }
-            setPeriod={ setPeriod }
-            loading={ loading }
-            hasSearched={ hasSearched }
-            onSubmit={ handleSubmit }
-            onFetch={ fetchData }
-            periods={ PERIODS }
+        <Header
+            user={ user } setUser={ setUser } repo={ repo } setRepo={ setRepo } period={ period }
+            setPeriod={ setPeriod } loading={ loading } hasSearched={ hasSearched } onSubmit={ handleSubmit }
+            onFetch={ fetchData } periods={ PERIODS }
         />
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
             { error && <ErrorMessage error={ error } /> }
             { ! hasSearched && ! loading && <EmptyState /> }
             { loading && <LoadingState /> }
-            
-            { data && ! loading && (
+
+            { data && ! loading && ( <div className="space-y-12 animate-in fade-in duration-500">
+                <SummaryCards data={ data } hitTrend={ hitTrend } bandwidthTrend={ bandwidthTrend } />
                 <DataTable chartData={ chartData } />
-            ) }
+            </div> ) }
         </main>
 
         <Footer />
