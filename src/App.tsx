@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { LoadingState } from './components/LoadingState';
 import { Patterns } from './components/Patterns';
+import { StatsCharts } from './components/StatsCharts';
 import { SummaryCards } from './components/SummaryCards';
 
 const PERIODS: { value: Period; label: string }[] = [
@@ -98,6 +99,7 @@ export default function App () {
                     data={ data } hitTrend={ hitTrend } bandwidthTrend={ bandwidthTrend }
                     globalRankTrend={ globalRankTrend } typeRankTrend={ typeRankTrend }
                 />
+                <StatsCharts chartData={ chartData } />
                 <DataTable chartData={ chartData } />
             </div> ) }
         </main>
