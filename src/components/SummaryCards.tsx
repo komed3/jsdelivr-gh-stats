@@ -20,7 +20,7 @@ const SummaryCard: React.FC< SummaryCardProps > = ( { icon, title, value, trend 
     return ( <div className="p-8 bg-white">
         <div className="flex items-center justify-between mb-6">
             { icon }
-            { trend !== 0 && ( <div className="text-xs font-black border border-black px-2 py-0.5">
+            { trend && ( <div className="text-xs font-black bg-black text-white px-1.5 py-0.5">
                 { trend > 0 ? '+' : '' }{ trend.toFixed( 1 ) }%
             </div> ) }
         </div>
