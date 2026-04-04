@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import type { JsDelivrResponse, Period } from './types';
 import { calculateTrend, formatDate } from './utils';
 
+import { DataTable } from './components/DataTable';
 import { EmptyState } from './components/EmptyState';
 import { ErrorMessage } from './components/ErrorMessage';
 import { Footer } from './components/Footer';
@@ -96,6 +97,10 @@ export default function App () {
             { error && <ErrorMessage error={ error } /> }
             { ! hasSearched && ! loading && <EmptyState /> }
             { loading && <LoadingState /> }
+            
+            { data && ! loading && (
+                <DataTable chartData={ chartData } />
+            ) }
         </main>
 
         <Footer />
