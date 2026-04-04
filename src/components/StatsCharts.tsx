@@ -24,7 +24,7 @@ interface StatsChartsProps {
 }
 
 const Chart = ( { icon, data, dataKey, label, formatter } : ChartProps ) => {
-    return ( <div className="border-2 border-black p-8 bg-white">
+    return ( <div className="border-2 border-black p-8 bg-white min-w-0">
         <div className="flex items-center justify-between mb-8">
             <h4 className="font-black uppercase tracking-widest flex items-center gap-2">
                 { icon }
@@ -34,8 +34,8 @@ const Chart = ( { icon, data, dataKey, label, formatter } : ChartProps ) => {
                 Peak: { formatter( Math.max( 0, ...data.map( ( d ) => d[ dataKey ] ) ) ) }
             </div>
         </div>
-        <div className="h-[350px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
+        <div className="w-full">
+            <ResponsiveContainer width="100%" height={ 350 }>
                 <AreaChart data={ data } margin={ { top: 5, right: 0, left: 0, bottom: 5 } }>
                     <XAxis dataKey="date" hide />
                     <Tooltip
@@ -47,8 +47,8 @@ const Chart = ( { icon, data, dataKey, label, formatter } : ChartProps ) => {
                             borderRadius: '0'
                         } }
                         itemStyle={ { color: '#fff' } }
-                        labelFormatter={ ( label: string ) => formatDate( label ) }
-                        formatter={ ( value: number ) => [ formatter( value ), label ] }
+                        labelFormatter={ ( label: any ) => formatDate( label ) }
+                        formatter={ ( value: any ) => [ formatter( value as number ), label ] }
                     />
                     <Area
                         type="monotone"
