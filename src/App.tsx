@@ -2,6 +2,9 @@ import React, { useMemo, useState } from 'react';
 import type { JsDelivrResponse, Period } from './types';
 import { calculateTrend, formatDate } from './utils';
 
+import { EmptyState } from './components/EmptyState';
+import { ErrorMessage } from './components/ErrorMessage';
+import { LoadingState } from './components/LoadingState';
 import { Patterns } from './components/Patterns';
 
 const PERIODS: { value: Period; label: string }[] = [
@@ -73,6 +76,10 @@ export default function App () {
     return ( <div className="min-h-screen bg-white text-black font-mono selection:bg-black selection:text-white">
         <Patterns />
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"></main>
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            { error && <ErrorMessage error={ error } /> }
+            { ! hasSearched && ! loading && <EmptyState /> }
+            { loading && <LoadingState /> }
+        </main>
     </div> );
 }
