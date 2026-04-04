@@ -30,7 +30,7 @@ const Chart = ( { icon, data, dataKey, label, formatter } : ChartProps ) => {
                 { icon }
                 { label }
             </h4>
-            <div className="text-[11px] font-black px-2 py-1 bg-black text-white uppercase tracking-tighter">
+            <div className="text-xs font-black bg-black text-white px-1.5 py-0.5">
                 Peak: { formatter( Math.max( 0, ...data.map( ( d ) => d[ dataKey ] ) ) ) }
             </div>
         </div>
