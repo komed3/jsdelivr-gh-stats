@@ -68,5 +68,7 @@ export default function App () {
     const hitTrend = data ? calculateTrend( data.hits.total, data.hits.prev.total ) : 0;
     const bandwidthTrend = data ? calculateTrend( data.bandwidth.total, data.bandwidth.prev.total ) : 0;
 
-    return ( <></> );
+    return ( <div className="min-h-screen bg-white text-black font-mono selection:bg-black selection:text-white">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10"></main>
+    </div> );
 }
