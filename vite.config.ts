@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig( () => ( {
+    base: '/jsdelivr-gh-stats/',
     plugins: [ react(), tailwindcss() ],
     resolve: { alias: { '@': resolve( __dirname, '.' ) } },
     build: {
