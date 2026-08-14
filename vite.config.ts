@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 export default defineConfig( () => ( {
     base: '/jsdelivr-gh-stats/',
     plugins: [ react(), tailwindcss() ],
-    resolve: { alias: { '@': resolve( __dirname, '.' ) } },
+    resolve: { alias: { '@': resolve( import.meta.dirname, '.' ) } },
     build: {
         chunkSizeWarningLimit: 1000,
         rollupOptions: { output: { manualChunks( id: string ) {
